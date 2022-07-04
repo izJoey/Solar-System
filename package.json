@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gh-pages -d dist"
   },
-  "author": "",
+  "author": "Joey",
   "license": "ISC",
   "dependencies": {
     "gh-pages": "^4.0.0"
