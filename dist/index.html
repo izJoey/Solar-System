@@ -8,14 +8,22 @@
     <title>Solar System</title>
   </head>
   <body>
-    <div class="grid">
+    <canvas id="c"></canvas>
+    <div class="container">
       <div class="header">HEADER</div>
       <div class="content">
-        <canvas class="webgl"></canvas>
+        <div data-diagram="sun">SUN</div>
+        <div data-diagram="mercury">MERCURY</div>
+        <div data-diagram="venus">MERCURY</div>
+        <div data-diagram="earth">EARTH</div>
+        <div data-diagram="mars">MARS</div>
+        <div data-diagram="jupiter">JUPITER</div>
+        <div data-diagram="saturn">SATURN</div>
+        <div data-diagram="uranus">URANUS</div>
+        <div data-diagram="neptune">NEPTUNE</div>
       </div>
       <div class="footer">FOOTER</div>
-
-      <script type="module" src="index.js"></script>
     </div>
+    <script type="module" src="index.js"></script>
   </body>
 </html>
