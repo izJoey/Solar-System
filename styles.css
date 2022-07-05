@@ -1,52 +1,55 @@
 body{
-    background-color:#1C3563
+    background-image: url("./media/stars.jpg");
 }
-.grid {
+
+#c {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    z-index: -1;
+}
+
+.container{
     display: grid;
-    grid-gap: 3px;
-    grid-template-columns: repeat(12,1fr);
-    grid-template-rows: auto auto auto;
-    grid-template-areas: 
-        "h h h h h h h h h h h h"
-        "c c c c c c c c c c c c"
-        "f f f f f f f f f f f f";
-    background-color: #634A1C;
-    height: 800px;
-    width: 80%;
-    margin: auto;
+    grid-gap: 6px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 100px 500px 100px;
+    grid-template-areas:
+        ". h h h h h h h h h h ."
+        ". c c c c c c c c c c ."
+        ". f f f f f f f f f f .";
 }
+
 .content {
     display: grid;
-    grid-gap: 3px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-        "t t t"
-        "t t t"
-        "t t t";
-    
+    grid: auto / auto auto auto;
+    text-align: center;
+    grid-area: c;
+    border: 1px solid aliceblue;
+
 }
+
+*[data-diagram] {
+    color: aliceblue;
+    width: auto;
+    height: auto;
+}
+
+
 
 .header {
-    grid-area: h;
+    background-color: #F46A42;
     text-align: center;
-    font-size: 3rem;
-}
-
-.content {
-    grid-area: c;
+    grid-area: h;
+    font-size: xx-large;
 }
 
 .footer {
-    grid-area: f;
+    background-color: #05F1F2;
     text-align: center;
-    font-size: 3rem;
-}
-
-.webgl {
-
-    grid-area: t;
-    margin: auto;
-    width: 500px;
-    height: 500px;
+    grid-area: f;
+    font-size: xx-large;
 }
