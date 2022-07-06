@@ -1,5 +1,18 @@
-@import url(http://fonts.googleapis.com/css?family=Russo+One);
-@import url(http://fonts.googleapis.com/css?family=Cinzel+Decorative);
+@font-face {
+    font-family: 'Cinzel Decorative';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/cinzeldecorative/v14/daaCSScvJGqLYhG8nNt8KPPswUAPni7TTMw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/russoone/v14/Z9XUDmZRWg6M1LvRYsHOz8mJ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 body{
     background-image: url("./media/space.jpg");
@@ -75,7 +88,7 @@ body{
     -webkit-text-fill-color: transparent;
     font-size: 4rem;
     top: 18%;
-    font-family: "Cinzel Decorative";
+    font-family: 'Cinzel Decorative';
     font-weight: bold;
     margin: auto;
     text-shadow: 
@@ -88,7 +101,7 @@ body{
     text-align: center;
     text-transform: uppercase;
     font-size: 2rem;
-    font-family: "Russo One";
+    font-family: 'Russo One';
     bottom: -92%;
     margin: auto;
     animation: pulsate 5s infinite alternate;
