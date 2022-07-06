@@ -4,25 +4,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="http://fonts.googleapis.com/css?family=Cinzel+Decorative"
+    />
     <link rel="stylesheet" href="styles.css" />
     <title>Solar System</title>
   </head>
   <body>
     <canvas id="c"></canvas>
     <div class="container">
-      <div class="header">HEADER</div>
-      <div class="content">
-        <div data-diagram="sun">SUN</div>
-        <div data-diagram="mercury">MERCURY</div>
-        <div data-diagram="venus">MERCURY</div>
-        <div data-diagram="earth">EARTH</div>
-        <div data-diagram="mars">MARS</div>
-        <div data-diagram="jupiter">JUPITER</div>
-        <div data-diagram="saturn">SATURN</div>
-        <div data-diagram="uranus">URANUS</div>
-        <div data-diagram="neptune">NEPTUNE</div>
+      <div class="header">
+        <div id="header">SOLAR SYSTEM</div>
       </div>
-      <div class="footer">FOOTER</div>
+      <div class="content">
+        <div data-diagram="sun">
+          <div id="planetNames">SUN</div>
+        </div>
+        <div data-diagram="mercury">
+          <div id="planetNames">mercury</div>
+        </div>
+        <div data-diagram="venus">
+          <div id="planetNames">venus</div>
+        </div>
+        <div data-diagram="earth">
+          <div id="planetNames">earth</div>
+        </div>
+        <div data-diagram="mars">
+          <div id="planetNames">mars</div>
+        </div>
+        <div data-diagram="jupiter">
+          <div id="planetNames">jupiter</div>
+        </div>
+        <div data-diagram="saturn">
+          <div id="planetNames">saturn</div>
+        </div>
+        <div data-diagram="uranus">
+          <div id="planetNames">uranus</div>
+        </div>
+        <div data-diagram="neptune">
+          <div id="planetNames">neptune</div>
+        </div>
+      </div>
+      <div class="footer"></div>
     </div>
     <script type="module" src="index.js"></script>
   </body>

@@ -1,5 +1,8 @@
 body{
-    background-image: url("./media/stars.jpg");
+    background-image: url("./media/space.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 #c {
@@ -14,42 +17,66 @@ body{
 
 .container{
     display: grid;
-    grid-gap: 6px;
+    grid-gap: 0px;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 100px 500px 100px;
+    grid-template-rows: 100px 800px 100px;
     grid-template-areas:
-        ". h h h h h h h h h h ."
-        ". c c c c c c c c c c ."
-        ". f f f f f f f f f f .";
+        ". . h h h h h h h h . ."
+        ". . c c c c c c c c . ."
+        ". . f f f f f f f f . .";
 }
 
 .content {
     display: grid;
-    grid: auto / auto auto auto;
-    text-align: center;
+    grid-gap: 20px;
+    grid: 1fr 1fr 1fr / 1fr 1fr 1fr;
     grid-area: c;
-    border: 1px solid aliceblue;
+    border: 5px hidden;
+    padding: 1rem;
 
 }
 
-*[data-diagram] {
-    color: aliceblue;
+*[data-diagram]{
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     width: auto;
     height: auto;
 }
 
-
-
 .header {
-    background-color: #F46A42;
-    text-align: center;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
     grid-area: h;
-    font-size: xx-large;
+
 }
 
 .footer {
-    background-color: #05F1F2;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
     text-align: center;
     grid-area: f;
     font-size: xx-large;
 }
+
+#header {
+    position: relative;
+    text-align: center;
+    background: linear-gradient(to right, #FAEA48 0%, #3330E4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 6vh;
+    top: 18%;
+    font-family: "Cinzel Decorative";
+    font-weight: bold;
+    margin: auto;
+}
+
+#planetNames {
+    color: white;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    bottom: -92%;
+    margin: auto;
+}
+
+
