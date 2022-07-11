@@ -1,2 +1,2 @@
-dist/* linguist-documentation=false
+dist/* linguist-documentation=true
 dist/* linguist-vendored
