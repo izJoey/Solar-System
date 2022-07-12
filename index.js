@@ -18,7 +18,7 @@ function main() {
     const near = 0.1;
     const far = 5;
     const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.set(0, 1, 2);
+    camera.position.set(0, 0, 2.2);
     camera.lookAt(0, 0, 0);
     scene.add(camera);
 
@@ -27,10 +27,10 @@ function main() {
     controls.noPan = true;
 
     {
-      const color = 0xffffff;
+      const color = 0xffffff  ;
       const intensity = 1;
       const light = new THREE.DirectionalLight(color, intensity);
-      light.position.set(-1, 2, 4);
+      light.position.set(-1, 0, 4);
       scene.add(light);
     }
 
@@ -40,6 +40,31 @@ function main() {
   const sceneInitFunctionsByName = {
     // SUN
     sun: (elem) => {
+      // TOP
+      const _VS = `
+      uniform vec3 viewVector;
+      uniform float c;
+      uniform float p;
+      varying float intensity;
+      void main() {
+        vec3 vNormal = normalize( normalMatrix * normal );
+        vec3 vNormel = normalize( normalMatrix * viewVector );
+        intensity = pow( c - dot(vNormal, vNormel), p );
+
+        gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+      }
+      `;
+      const _FS = `
+      uniform vec3 glowColor;
+      varying float intensity;
+      void main()
+      {
+        vec3 glow = glowColor * intensity;
+        gl_FragColor = vec4( glow, 1.0 );
+      }
+      `;
+
+      // BOTTOM
       const { scene, camera, controls } = makeScene(elem);
       const radius = 0.7;
       const widthSegments = 32;
@@ -55,6 +80,26 @@ function main() {
       });
       const mesh = new THREE.Mesh(geometry, material);
       scene.add(mesh);
+
+      // top trying makeing glow
+      const boxGeometry = new THREE.SphereGeometry(0.78, 32, 32);
+      const boxMaterial = new THREE.ShaderMaterial({
+        uniforms: {
+          c: { type: "f", value: 0.0001 },
+          p: { type: "f", value: 2.0 },
+          glowColor: { type: "c", value: new THREE.Color(0xdddd00) },
+          viewVector: { type: "v3", value: camera.position },
+        },
+        vertexShader: _VS,
+        fragmentShader: _FS,
+        side: THREE.FrontSide,
+        blending: THREE.AdditiveBlending,
+        transparent: true,
+      });
+      const cube = new THREE.Mesh(boxGeometry, boxMaterial);
+      scene.add(cube);
+
+      // bottom trying makeing glow
       return (time, rect) => {
         mesh.rotation.y = time * 0.1;
         camera.aspect = rect.width / rect.height;
