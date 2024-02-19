@@ -27,7 +27,7 @@ function main() {
     controls.noPan = true;
 
     {
-      const color = 0xffffff  ;
+      const color = 0xffffff;
       const intensity = 1;
       const light = new THREE.DirectionalLight(color, intensity);
       light.position.set(-1, 0, 4);
@@ -60,7 +60,7 @@ function main() {
       void main()
       {
         vec3 glow = glowColor * intensity;
-        gl_FragColor = vec4( glow, 1.0 );
+        gl_FragColor = vec4( glow, 0.3 );
       }
       `;
 
@@ -82,26 +82,28 @@ function main() {
       scene.add(mesh);
 
       // top trying makeing glow
-      const boxGeometry = new THREE.SphereGeometry(0.78, 32, 32);
-      const boxMaterial = new THREE.ShaderMaterial({
+      const glowRadius = 0.78;
+      const glowGeometry = new THREE.SphereBufferGeometry(glowRadius, 32, 32);
+      const glowMaterial = new THREE.ShaderMaterial({
         uniforms: {
-          c: { type: "f", value: 0.0001 },
-          p: { type: "f", value: 2.0 },
-          glowColor: { type: "c", value: new THREE.Color(0xdddd00) },
+          c: { type: "f", value: 0.0001 }, // Adjust for desired falloff
+          p: { type: "f", value: 2.0 }, // Adjust for desired glow intensity
+          glowColor: { type: "c", value: new THREE.Color(0xdddd00) }, // Set color preference
           viewVector: { type: "v3", value: camera.position },
         },
         vertexShader: _VS,
         fragmentShader: _FS,
-        side: THREE.FrontSide,
+        side: THREE.BackSide, // Render only the outer surface for realistic glow
         blending: THREE.AdditiveBlending,
         transparent: true,
       });
-      const cube = new THREE.Mesh(boxGeometry, boxMaterial);
-      scene.add(cube);
-
+      const glowMesh = new THREE.Mesh(glowGeometry, glowMaterial);
+      scene.add(glowMesh);
+  
       // bottom trying makeing glow
       return (time, rect) => {
         mesh.rotation.y = time * 0.1;
+        glowMesh.scale.set(1.55, 1.55, 1.55); 
         camera.aspect = rect.width / rect.height;
         camera.updateProjectionMatrix();
         controls.handleResize();
